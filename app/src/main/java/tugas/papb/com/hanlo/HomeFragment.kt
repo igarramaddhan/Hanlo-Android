@@ -29,8 +29,8 @@ class HomeFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
         loadData()
         post_list = rootView.findViewById(R.id.post_rv)
-        post_list.layoutManager = LinearLayoutManager(context)
-        post_list.adapter = PostAdapter(posts, requireContext())
+        post_list.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        post_list.adapter = PostAdapter(posts.asReversed(), requireContext())
         post_list.addItemDecoration(ListPaddingDecoration(
                 resources.getDimension(R.dimen.default_padding).toInt()))
          rootView.findViewById<FloatingActionButton>(R.id.add_post_fab).setOnClickListener {
@@ -61,20 +61,7 @@ class HomeFragment : Fragment() {
                 println("loadPost:onCancelled ${databaseError.toException()}")
             }
         }
-        firebaseDatabase.reference.child("posts").addListenerForSingleValueEvent(menuListener)
-    }
-
-    fun loadDatabase(data: DatabaseReference) {
-        val post: List<Post> = mutableListOf(
-                Post("Igar Ramaddhan", "Test First Post"),
-                Post("Igar Ramaddhan", "Test Second Post")
-        )
-        post.forEach {
-            val key: String = data.push().key.toString()
-            it.uuid = key
-            data.child(key).setValue(it)
-            Log.d("POST", key)
-        }
+        firebaseDatabase.reference.child("posts").addValueEventListener(menuListener)
     }
 }
 

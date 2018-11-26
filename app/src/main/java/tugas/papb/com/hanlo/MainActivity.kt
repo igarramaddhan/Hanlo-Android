@@ -23,35 +23,7 @@ class MainActivity : AppCompatActivity() {
             navigationOnSelectItem(it)
         }
         openFragment( HomeFragment.newInstance())
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId){
-            R.id.action_profile -> {
-                Log.d("ACTION", "Profile Clicked")
-            }
-            R.id.action_logout -> {
-                val builder = AlertDialog.Builder(this@MainActivity)
-                builder.setTitle("Logout")
-                builder.setMessage("Are you sure want to logout?")
-                builder.setPositiveButton("YES"){ dialog, which ->
-                    firebaseAuth.signOut()
-                    val intent = Intent(this, LoginActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    startActivity(intent)
-                }
-                builder.setNegativeButton("NO"){ dialog, which ->
-                    Snackbar.make(activity_main, "Logout canceled", Snackbar.LENGTH_SHORT).show()
-                }
-                builder.create().show()
-            }
-        }
-        return super.onOptionsItemSelected(item)
+        supportActionBar?.title = "Home"
     }
 
     fun navigationOnSelectItem(item: MenuItem): Boolean{
@@ -66,6 +38,12 @@ class MainActivity : AppCompatActivity() {
                 supportActionBar?.title = "Chat"
                 val chatFragment = ChatFragment.newInstance()
                 openFragment(chatFragment)
+                true
+            }
+            R.id.navigation_profile -> {
+                supportActionBar?.title = "Profile"
+                val profileFragment = ProfileFragment.newInstance()
+                openFragment(profileFragment)
                 true
             }
             else -> {
