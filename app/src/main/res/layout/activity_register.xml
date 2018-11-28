@@ -3,32 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".LoginActivity"
-    android:orientation="vertical">
+    android:padding="8dp"
+    android:id="@+id/register_layout">
+
     <EditText
-        android:hint="Display Name"
         android:id="@+id/name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Display Name"
         android:inputType="textPersonName"
         tools:ignore="LabelFor" />
+
     <EditText
-        android:hint="Email"
         android:id="@+id/email_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         tools:ignore="LabelFor" />
+
     <EditText
-        android:hint="Password"
         android:id="@+id/password_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Password"
         android:inputType="textPassword"
         tools:ignore="LabelFor" />
+
     <Button
-        android:text="Register"
         android:id="@+id/register_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Register" />
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.MenuItem
+import android.widget.RelativeLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -60,6 +61,7 @@ class PostDetailActivity : AppCompatActivity() {
                 comments.forEach {
                     Log.d("CHATS", it.comment)
                 }
+                progress_bar.visibility = RelativeLayout.GONE
                 adapter.notifyDataSetChanged()
             }
 

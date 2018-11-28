@@ -11,9 +11,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.function.Consumer
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment() {
     val firebaseDatabase = FirebaseDatabase.getInstance()
@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
-        loadData()
+        loadData(rootView)
         post_list = rootView.findViewById(R.id.post_rv)
         post_list.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         post_list.adapter = PostAdapter(posts.asReversed(), requireContext())
@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
 
 
 
-    fun loadData(){
+    fun loadData(view: View){
         val menuListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 posts.clear()
@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
                 dataSnapshot.children.forEach {
                     Log.d("POST", it.getValue<Post>(Post::class.java)?.name)
                 }
+                view.progress_bar.visibility = RelativeLayout.GONE
                 post_list.adapter.notifyDataSetChanged()
             }
 

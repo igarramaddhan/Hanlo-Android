@@ -1,16 +1,19 @@
 package tugas.papb.com.hanlo
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.hardware.input.InputManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AlertDialog
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import android.view.View
+import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.google.firebase.auth.FirebaseAuth
@@ -70,11 +73,18 @@ class LoginActivity : AppCompatActivity() {
         }else if(password.isEmpty()){
             password_edit_text.error = "Password is required"
         }else{
+            val dialog= Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setCancelable(false)
+            dialog.setContentView(R.layout.loading_indicator)
+            dialog.show()
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
+                    dialog.hide()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 } else {
+                    dialog.hide()
                     Snackbar.make(activity_login, "Login Failed",
                             Snackbar.LENGTH_SHORT).show()
                 }

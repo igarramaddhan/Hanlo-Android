@@ -1,9 +1,12 @@
 package tugas.papb.com.hanlo
 
+import android.app.Dialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.view.MenuItem
+import android.view.Window
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.android.synthetic.main.activity_register.*
@@ -26,8 +29,14 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun register(email: String, password: String, displayName: String) {
+        val dialog= Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.loading_indicator)
+        dialog.show()
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful){
+                dialog.hide()
                 val updateProfile = UserProfileChangeRequest.Builder().setDisplayName(displayName).build()
                 firebaseAuth.currentUser?.updateProfile(updateProfile)?.addOnCompleteListener {
                     if(it.isSuccessful){
@@ -35,6 +44,10 @@ class RegisterActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
+            }else{
+                dialog.hide()
+                Snackbar.make(register_layout, "Register Failed",
+                        Snackbar.LENGTH_SHORT).show()
             }
         }
     }

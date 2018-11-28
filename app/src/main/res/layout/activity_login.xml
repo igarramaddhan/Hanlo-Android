@@ -7,7 +7,18 @@
     android:orientation="vertical"
     android:id="@+id/activity_login"
     android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:gravity="center_vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="32sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="16dp"/>
+
     <EditText
         android:hint="Email"
         android:id="@+id/email_edit_text"
@@ -28,7 +39,9 @@
         android:text="Login"
         android:id="@+id/login_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"/>
     <Button
         android:text="Register"
         android:id="@+id/register_button"
