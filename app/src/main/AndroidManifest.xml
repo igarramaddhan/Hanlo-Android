@@ -22,7 +22,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".AddPostActivity" />
         <activity android:name=".ChatDetailActivity" />
-        <activity android:name=".PostDetailActivity"></activity>
+        <activity android:name=".PostDetailActivity" />
+        <activity android:name=".ForgetPasswordActivity"></activity>
     </application>
 
 </manifest>

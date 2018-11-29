@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     private fun openFragment(fragment: android.support.v4.app.Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container_layout, fragment)
-        transaction.addToBackStack(null)
+//        transaction.addToBackStack(null)
         transaction.commit()
     }
 }

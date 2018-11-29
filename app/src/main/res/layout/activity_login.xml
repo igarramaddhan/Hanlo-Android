@@ -1,50 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:orientation="vertical"
-    android:id="@+id/activity_login"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     android:gravity="center_vertical"
-    android:padding="8dp">
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".LoginActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Login"
-        android:textSize="32sp"
         android:textColor="@color/colorPrimary"
-        android:layout_marginBottom="16dp"/>
+        android:textSize="32sp" />
 
     <EditText
-        android:hint="Email"
         android:id="@+id/email_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Email"
         android:inputType="textEmailAddress"
-        tools:ignore="LabelFor"
-        android:nextFocusDown="@id/password_edit_text"/>
+        android:nextFocusDown="@id/password_edit_text"
+        tools:ignore="LabelFor" />
+
     <EditText
-        android:hint="Password"
         android:id="@+id/password_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Password"
+        android:imeOptions="actionDone"
         android:inputType="textPassword"
-        tools:ignore="LabelFor"
-        android:imeOptions="actionDone"/>
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/forget_password_text_view"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forget Password"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_margin="8dp"
+        android:gravity="right"/>
+
     <Button
-        android:text="Login"
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
-        android:textColor="@android:color/white"/>
+        android:text="Login"
+        android:textColor="@android:color/white" />
+
     <Button
-        android:text="Register"
         android:id="@+id/register_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Register" />
 </LinearLayout>

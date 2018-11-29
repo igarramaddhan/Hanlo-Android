@@ -66,6 +66,11 @@ class LoginActivity : AppCompatActivity() {
                 hideKeyboard(v)
             }
         }
+
+        forget_password_text_view.setOnClickListener {
+            val intent = Intent(this, ForgetPasswordActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun login(email: String, password: String) {
