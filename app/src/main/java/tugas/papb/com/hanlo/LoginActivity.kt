@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
-    val firebaseAuth = FirebaseAuth.getInstance();
+    val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         if(firebaseAuth.currentUser != null){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         login_button.setOnClickListener {
@@ -83,6 +84,7 @@ class LoginActivity : AppCompatActivity() {
                     dialog.hide()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
                 } else {
                     dialog.hide()
                     Snackbar.make(activity_login, "Login Failed",

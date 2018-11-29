@@ -37,6 +37,22 @@
             android:enabled="false"
             android:textColor="@color/colorPrimaryText" />
 
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/password_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:visibility="gone"
+            android:id="@+id/password_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@color/colorPrimaryText" />
+
         <Button
             android:id="@+id/edit_button"
             android:layout_width="match_parent"
